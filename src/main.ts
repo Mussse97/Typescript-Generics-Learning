@@ -110,18 +110,26 @@ searchBtn.addEventListener("click", () => {
     return;
   }
 
+  // sök först i personliga kontakter
   const personal = personalContacts.findById(id);
-  const business = businessContacts.findById(id);
-
   if (personal) {
-    searchResult.textContent = `Hittad personlig: ${personal.name} (${personal.phone})`;
-  } else if (business) {
-    searchResult.textContent = `Hittad business: ${business.company} (${business.contactPerson})`;
-  } else {
-    searchResult.textContent = "Ingen kontakt hittades.";
+    searchResult.textContent = `Hittad personlig: ${personal.name} (${personal.phone}) ${personal.isFavorite ? "⭐" : ""}`;
+    return;
   }
+
+  // annars sök i business kontakter
+  const business = businessContacts.findById(id);
+  if (business) {
+    searchResult.textContent = `Hittad business: ${business.company} - ${business.contactPerson} (${business.email}) ${business.isFavorite ? "⭐" : ""}`;
+    return;
+  }
+
+  // om ingen träff
+  searchResult.textContent = "Ingen kontakt hittades.";
 });
+
 
 // Rendera första gången
 renderPersonal();
 renderBusiness();
+
