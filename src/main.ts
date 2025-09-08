@@ -1,24 +1,59 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import { ContactList} from "./contacts";
+import type { PersonContact } from "./contacts";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+// Skapa en lista för personliga kontakter
+const personalContacts = new ContactList<PersonContact>();
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+// Hämta DOM-element
+const nameInput = document.getElementById("name") as HTMLInputElement;
+const phoneInput = document.getElementById("phone") as HTMLInputElement;
+const addBtn = document.getElementById("addBtn") as HTMLButtonElement;
+const contactList = document.getElementById("contactList") as HTMLUListElement;
+
+const searchIdInput = document.getElementById("searchId") as HTMLInputElement;
+const searchBtn = document.getElementById("searchBtn") as HTMLButtonElement;
+const searchResult = document.getElementById("searchResult") as HTMLParagraphElement;
+
+// Håller reda på ID:n
+let nextId = 1;
+
+// Funktion: rendera listan
+function renderContacts() {
+  contactList.innerHTML = "";
+  personalContacts.getAll().forEach(c => {
+    const li = document.createElement("li");
+    li.textContent = `${c.id}: ${c.name} (${c.phone})`;
+    contactList.appendChild(li);
+  });
+}
+
+// Event: Lägg till kontakt
+addBtn.addEventListener("click", () => {
+  const name = nameInput.value.trim();
+  const phone = phoneInput.value.trim();
+
+  if (!name || !phone) {
+    alert("Fyll i både namn och telefon!");
+    return;
+  }
+
+  personalContacts.add({ id: nextId++, name, phone });
+  nameInput.value = "";
+  phoneInput.value = "";
+
+  renderContacts();
+});
+
+// Event: Sök kontakt
+searchBtn.addEventListener("click", () => {
+  const id = Number(searchIdInput.value);
+  if (!id) {
+    alert("Ange ett giltigt ID!");
+    return;
+  }
+
+  const contact = personalContacts.getById(id);
+  searchResult.textContent = contact
+    ? `Hittad: ${contact.name} (${contact.phone})`
+    : "Ingen kontakt hittades.";
+});

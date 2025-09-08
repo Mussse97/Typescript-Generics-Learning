@@ -1,13 +1,31 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Kontaktlista med Generics</title>
+</head>
+<script type="module" src="./src/main.ts" defer></script>
+<body>
+  <h1>📞 Kontaktlista</h1>
+
+  <section>
+    <h2>Lägg till kontakt</h2>
+    <input id="name" type="text" placeholder="Namn">
+    <input id="phone" type="text" placeholder="Telefon">
+    <button id="addBtn">Lägg till</button>
+  </section>
+
+  <section>
+    <h2>Sök kontakt via ID</h2>
+    <input id="searchId" type="number" placeholder="ID">
+    <button id="searchBtn">Sök</button>
+    <p id="searchResult"></p>
+  </section>
+
+  <section>
+    <h2>Alla kontakter</h2>
+    <ul id="contactList"></ul>
+  </section>
+
+</body>
 </html>
