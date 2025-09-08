@@ -1,5 +1,5 @@
-// En generisk kontaktlista
-// T måste ha id (number) och kan ha isFavorite (boolean)
+
+
 export class ContactList<T extends { id: number; isFavorite?: boolean }> {
   private contacts: T[] = []; // lagrar alla kontakter
 
@@ -19,16 +19,7 @@ export class ContactList<T extends { id: number; isFavorite?: boolean }> {
     this.contacts = this.contacts.filter(c => c.id !== id); // ta bort kontakt via id
   }
 
-  getFavorites(): T[] {
-    return this.contacts.filter(c => c.isFavorite); // returnera bara favoriter
-  }
-
-  removeFavorite(id: number): void {
-    const contact = this.findById(id); // hitta kontakt via id
-    if (contact) {
-      contact.isFavorite = false; // sätt favorit till false
-    }
-  }
+  
 }
 
 

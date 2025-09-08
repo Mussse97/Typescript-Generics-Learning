@@ -34,18 +34,7 @@ function renderPersonal() {
     const li = document.createElement("li");
     li.textContent = `${c.id}: ${c.name} (${c.phone}) ${c.isFavorite ? "⭐" : ""}`;
 
-    const favBtn = document.createElement("button");
-    favBtn.textContent = c.isFavorite ? "Ta bort favorit" : "Favorisera";
-    favBtn.addEventListener("click", () => {
-      if (c.isFavorite) {
-        personalContacts.removeFavorite(c.id);
-      } else {
-        c.isFavorite = true;
-      }
-      renderPersonal();
-    });
-
-    li.appendChild(favBtn);
+    
     personalList.appendChild(li);
   });
 }
@@ -57,18 +46,7 @@ function renderBusiness() {
     const li = document.createElement("li");
     li.textContent = `${c.id}: ${c.company} - ${c.contactPerson} (${c.email}) ${c.isFavorite ? "⭐" : ""}`;
 
-    const favBtn = document.createElement("button");
-    favBtn.textContent = c.isFavorite ? "Ta bort favorit" : "Favorisera";
-    favBtn.addEventListener("click", () => {
-      if (c.isFavorite) {
-        businessContacts.removeFavorite(c.id);
-      } else {
-        c.isFavorite = true;
-      }
-      renderBusiness();
-    });
 
-    li.appendChild(favBtn);
     businessList.appendChild(li);
   });
 }
@@ -147,4 +125,3 @@ searchBtn.addEventListener("click", () => {
 // Rendera första gången
 renderPersonal();
 renderBusiness();
-
