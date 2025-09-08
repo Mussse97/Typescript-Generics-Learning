@@ -4,6 +4,7 @@ export type PersonalContact = {
   email: string;
   phone: string;
   relation: string;
+  isFavorite?: boolean;
 };
 
 export type BusinessContact = {
@@ -11,4 +12,5 @@ export type BusinessContact = {
   contactPerson: string;
   email: string;
   company: string;
+  isFavorite?: boolean;
 };
