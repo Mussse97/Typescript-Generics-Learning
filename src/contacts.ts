@@ -3,9 +3,11 @@ export interface PersonContact {
   name: string;
   phone: string;
   email?: string;
+  // uppgift lösning
+   favorite?: boolean; // ny egenskap
 }
 
-export class ContactList<T extends { id: number }> {
+export class ContactList<T extends { id: number; favorite?: boolean }> {
   private contacts: T[] = [];
 
   add(contact: T): void {
@@ -15,9 +17,12 @@ export class ContactList<T extends { id: number }> {
   getAll(): T[] {
     return this.contacts;
   }
-  
+
   getById(id: number): T | undefined {
     return this.contacts.find(c => c.id === id);
   }
-
+  // uppgift lösning
+   getFavorites(): T[] {
+    return this.contacts.filter(c => c.favorite);
+  }
 }
