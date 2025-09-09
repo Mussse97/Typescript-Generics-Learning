@@ -43,7 +43,34 @@ Korrekt lösning blir:
 const contacts = new ContactList<PersonContact>();
 ```
 ---
-3. Ett till fel här
+3. Blandar ihop T med ett specifikt typnamn
+```typescript
+export class ContactList<T extends { id: number }> {
+  private contacts: T[] = [];
+
+  printNames(contact: T): void {
+    console.log(contact.name); 
+    // ❌ Error: Property 'name' does not exist on type 'T'
+  }
+}
+```
+Här får vi fel eftersom T bara är garanterad att ha id: number.
+Korrekt lösning blir att antingen utöka constrainten:
+```typescript
+export class ContactList<T extends { id: number; name: string }> {
+  private contacts: T[] = [];
+}
+```
+eller använda ett specifikt interface som redan har name:
+```typescript
+interface PersonContact {
+  id: number;
+  name: string;
+  phone: string;
+}
+
+const contacts = new ContactList<PersonContact>();
+```
    
 ---
 
