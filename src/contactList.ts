@@ -18,7 +18,6 @@ export class ContactList<T extends { id: number; isFavorite?: boolean }> {
   removeById(id: number): void {
     this.contacts = this.contacts.filter(c => c.id !== id); // ta bort kontakt via id
   }
-
   
 }
 
