@@ -136,7 +136,7 @@ Detta gör koden:
 ### Uppgift
 Er uppgift är att modifiera applikationen så att det går att lägga till favoriter i kontaktlistan.  
 Hints:  
-`` 1. Kanske behövs det en boolean? 
+`` 1. Kan vi garantera att T upptäcker att isFavorit finns?
 ``  
 ``
 2. Ytterligare en metod ContactList?
