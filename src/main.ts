@@ -23,9 +23,8 @@ const searchIdInput = document.getElementById("searchId") as HTMLInputElement;
 const searchBtn = document.getElementById("searchBtn") as HTMLButtonElement;
 const searchResult = document.getElementById("searchResult") as HTMLParagraphElement;
 
-// ID-räknare
-let nextPersonalId = 1;
-let nextBusinessId = 1;
+// Gemensam ID-räknare (unika ID för ALLA kontakter)
+let nextId = 1;
 
 // Funktion: rendera personliga kontakter
 function renderPersonal() {
@@ -61,14 +60,13 @@ addBtn.addEventListener("click", () => {
     return;
   }
 
-  personalContacts.add({
-    id: nextPersonalId++,
-    name,
-    phone,
-    email: "",
-    relation: "vän",
-    isFavorite: false,
-  });
+personalContacts.add({
+  id: nextId++,
+  name,
+  phone,
+  isFavorite: false,
+});
+
 
   nameInput.value = "";
   phoneInput.value = "";
@@ -88,7 +86,7 @@ addBusinessBtn.addEventListener("click", () => {
   }
 
   businessContacts.add({
-    id: nextBusinessId++,
+    id: nextId++,
     company,
     contactPerson,
     email,
@@ -132,4 +130,6 @@ searchBtn.addEventListener("click", () => {
 // Rendera första gången
 renderPersonal();
 renderBusiness();
+
+
 

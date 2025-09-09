@@ -1,9 +1,7 @@
 export type PersonalContact = {
   id: number;
   name: string;
-  email: string;
   phone: string;
-  relation: string;
   isFavorite?: boolean;
 };
 
