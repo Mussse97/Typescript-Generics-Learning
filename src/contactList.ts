@@ -1,6 +1,6 @@
 
 
-export class ContactList<T extends { id: number; isFavorite?: boolean }> {
+export class ContactList<T extends { id: number;}> {
   private contacts: T[] = []; // lagrar alla kontakter
 
   add(contact: T): void {
