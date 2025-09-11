@@ -3,28 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <title>Kontaktlista med Generics</title>
+  <script type="module" src="./src/main.ts" defer></script>
 </head>
-<script type="module" src="./src/main.ts" defer></script>
 <body>
   <h1>📞 Kontaktlista</h1>
 
+  <!-- Personliga kontakter -->
   <section>
-    <h2>Lägg till kontakt</h2>
+    <h2>Lägg till personlig kontakt</h2>
     <input id="name" type="text" placeholder="Namn">
     <input id="phone" type="text" placeholder="Telefon">
-    <button id="addBtn">Lägg till</button>
+    <button id="addBtn">Lägg till personlig</button>
   </section>
 
+  <section>
+    <h2>Personliga kontakter</h2>
+    <ul id="personalList"></ul>
+  </section>
+
+  <!-- Business kontakter -->
+  <section>
+    <h2>Lägg till business kontakt</h2>
+    <input id="company" type="text" placeholder="Företag">
+    <input id="contactPerson" type="text" placeholder="Kontaktperson">
+    <input id="businessEmail" type="email" placeholder="Email">
+    <button id="addBusinessBtn">Lägg till business</button>
+  </section>
+
+  <section>
+    <h2>Business kontakter</h2>
+    <ul id="businessList"></ul>
+  </section>
+
+  <!-- Sökning -->
   <section>
     <h2>Sök kontakt via ID</h2>
     <input id="searchId" type="number" placeholder="ID">
     <button id="searchBtn">Sök</button>
     <p id="searchResult"></p>
-  </section>
-
-  <section>
-    <h2>Alla kontakter</h2>
-    <ul id="contactList"></ul>
   </section>
 
 </body>
