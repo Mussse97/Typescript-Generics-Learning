@@ -71,16 +71,6 @@ class ContactList<T extends { id: number }> {
   }
 }
 ```
-När vi vill använda den bestämmer vi vilken typ T ska vara:
-```typescript
-const personalContacts = new ContactList<PersonalContact>();
-const businessContacts = new ContactList<BusinessContact>();
-
-personalContacts.add({ id: 1, name: "Manuel", phone: "0701234567" });
-businessContacts.add({ id: 2, company: "Nodehill", contactPerson: "Thomas", email: "thomas@nodehill.com" });
-```
-
----
 
 ### Vanliga fel
 1. Felaktig typ vid instansering  
@@ -214,3 +204,4 @@ Hints:
 ``
 3. En knapp kommer att behövas för i vår ui för att slutföra uppgiften. Under ``renderPersonal`` och ``rednerBusiness`` i main.ts behöver ni skapa ett button element, göra att ``c.isFavorite`` är true och sedan anropa ``rednerPersonal`` funktionen.
 ``
+
