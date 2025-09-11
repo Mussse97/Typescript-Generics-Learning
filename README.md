@@ -1,11 +1,84 @@
 # Typescript kontaktlista med generics
 ## Grupp 2, Musse, Ismail, Jesper
 ### Introduktion
-Generics används för bygga återanvändbara komponenter.  
-I vårat fall har vi valt att använda class och skapat flera metoder i en class (ContactList) som kräver id:number.
-Så länge varje objekt, som vi vill använda metoderna med, innehåller id: number så kan vi använda ContactList class.  
-Vi skulle i vårat fall kunna återanvända logiken till olika kontakter, vi skulle kunna ha leverantörer och kundkontaker och använda
-samma logik så länge de innehåller id: number.
+När vi bygger program vill vi vara effektiva och återanvända kod istället för att skriva samma kod flera gånger för olika typer av data,
+då kan vi använda generics.  
+Utan generics hade vi behövt skriva två olika klasser:  
+- PersonalContactList  
+- BusinessContactList
+  
+Dessa klasser skulle ha väldigt snarlik kod men hanterar olika typer av objekt.
+Istället kan vi skriva en klass ContactList<T>.  
+T fungerar som en platshållare för typen som vi tänker använda.
+
+```typescript
+  const personalContacts = new ContactList<PersonalContact>();
+  const businessContacts = new ContactList<BusinessContact>();
+```
+Här skapar vi två nya listor och bestämmer vilken typ T ska vara.
+Nu kan vi använda metoder och logik från klassen ContactList och typescript ser till att vi inte blandar ihop dom.
+
+Exempel utan generics:  
+```typescript
+class PersonalContactList {
+  private contacts: PersonalContact[] = [];
+
+  add(contact: PersonalContact): void {
+    this.contacts.push(contact);
+  }
+
+  getAll(): PersonalContact[] {
+    return this.contacts;
+  }
+
+  findById(id: number): PersonalContact | undefined {
+    return this.contacts.find(c => c.id === id);
+  }
+}
+
+class BusinessContactList {
+  private contacts: BusinessContact[] = [];
+
+  add(contact: BusinessContact): void {
+    this.contacts.push(contact);
+  }
+
+  getAll(): BusinessContact[] {
+    return this.contacts;
+  }
+
+  findById(id: number): BusinessContact | undefined {
+    return this.contacts.find(c => c.id === id);
+  }
+}
+
+```
+Exempel med generics och en enskild ContacList:
+```typescript
+class ContactList<T extends { id: number }> {
+  private contacts: T[] = [];
+
+  add(contact: T): void {
+    this.contacts.push(contact);
+  }
+
+  getAll(): T[] {
+    return this.contacts;
+  }
+
+  findById(id: number): T | undefined {
+    return this.contacts.find(c => c.id === id);
+  }
+}
+```
+När vi vill använda den bestämmer vi vilken typ T ska vara:
+```typescript
+const personalContacts = new ContactList<PersonalContact>();
+const businessContacts = new ContactList<BusinessContact>();
+
+personalContacts.add({ id: 1, name: "Manuel", phone: "0701234567" });
+businessContacts.add({ id: 2, company: "Nodehill", contactPerson: "Thomas", email: "thomas@nodehill.com" });
+```
 
 ---
 
