@@ -1,5 +1,5 @@
 # Typescript kontaktlista med generics
-## Grupp 2, Musse, Ismail, Jesper
+## Grupp 2, Mostafa, Ismail, Jesper
 ### Introduktion
 När vi bygger program vill vi vara effektiva och återanvända kod istället för att skriva samma kod flera gånger för olika typer av data,
 då kan vi använda generics.  
@@ -203,6 +203,7 @@ Hints:
 
 
 3. En knapp kommer att behövas för i vår ui för att slutföra uppgiften. Under ``renderPersonal`` och ``rednerBusiness`` i main.ts behöver ni skapa ett button element, göra att ``c.isFavorite`` är true och sedan anropa ``rednerPersonal`` funktionen.
+
 
 
 
