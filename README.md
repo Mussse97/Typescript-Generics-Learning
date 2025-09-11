@@ -133,7 +133,7 @@ Detta gör koden:
 Er uppgift är att modifiera applikationen så att det går att lägga till favoriter i kontaktlistan. När en kontakt finns i listan ska man kunna klicka på en stjärna bredvid kontakten för att favoritisera dem. 
 Hints:  
 `` 
-1. Vi kan i nuläget inte garantera att ``T`` vet att ``isFavorite`` existerar. Därför behöver vi extenda ``ContactsList `` med ``isFavorite. `` med rätt typ.
+1. Vi kan i nuläget inte garantera att ``T`` vet att ``isFavorite`` existerar. Därför behöver vi extenda ``ContactsList`` med ``isFavorite. `` med rätt typ.
 ``  
 ``
 2. För att kunna filtrera fram favoriter behöver ``T`` känna till att det finns en egenskap ``isFavorite``. Fundera på hur du kan utöka constrainten på ``T`` så att metoden kan returnera bara de kontakter där ``c.isFavorite`` är true. Detta kan vi lyckas med under ``ContaktsList`` klassen med en extra GetFavorit function kanske?
@@ -141,7 +141,3 @@ Hints:
 ``
 3. En knapp kommer att behövas för i vår ui för att slutföra uppgiften. Under ``renderPersonal`` och ``rednerBusiness`` i main.ts behöver ni skapa ett button element, göra att ``c.isFavorite`` är true och sedan anropa ``rednerPersonal`` funktionen.
 ``
-### Extra övning (om första var för enkel)
-Extra uppgift är att man ska kunna ta bort favoriter.
-``
-1. 

@@ -1,0 +1,5 @@
+För någon som är ny i TypeScript märkte vi att det är ganska enkelt att använda generics i koden, men betydligt svårare att förklara dem med enkla ord. Efter den feedback vi fick valde vi därför att skriva om introduktionen för att göra den mer lättillgänglig och begriplig.
+
+Vi fick även synpunkter på att uppgiften med “favoriter” kunde tolkas på olika sätt. Vissa uppfattade det som att man markerar en kontakt som favorit i listan, medan andra trodde att man kunde spara en favorit redan när kontakten skapades. För att undvika missförstånd förtydligade vi att tanken var att favoriten ska markeras i listan, och vi lade dessutom till steg-för-steg-ledtrådar för att göra uppgiften mer konkret.
+
+Genom att granska andras tutorials lärde vi oss också vikten av att hålla förklaringar korta, tydliga och konkreta. Det räcker inte att koden fungerar – texten måste dessutom vara skriven på ett sätt som gör att läsaren kan följa med och förstå varför koden fungerar. Vi insåg att det som känns självklart för oss, eftersom vi själva skrivit koden, kan vara svårt för någon annan att greppa. Därför är det extra viktigt att README-filen är enkel, tydlig och pedagogiskt skriven.
